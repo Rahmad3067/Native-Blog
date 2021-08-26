@@ -1,9 +1,28 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import MyLink from '../Mylink';
 
 
 export default function AddPost () {
+
+    const [post, setPost] = useState([]);
+
+    const getPosts = (() => {
+        fetch("https://jsonplaceholder.typicode.com/posts") 
+        .then((res) => res.json()) 
+        .then((res) => { 
+            setPost(res); 
+        });
+        })
+
+        
+        useState (() => {
+            getPosts();
+        },[])
+
+
+
+
   return (
     <View style={styles.container}>
 
